@@ -43,7 +43,7 @@ class CoachServiceTests {
 	@Order(4)
 	void testGetCoachByName() {
 		Coach adam = cserv.getCoachByName("Adam");
-		Assertions.assertEquals("Adam", adam);
+		Assertions.assertEquals("Adam", adam.getName());
 	}
 
 }

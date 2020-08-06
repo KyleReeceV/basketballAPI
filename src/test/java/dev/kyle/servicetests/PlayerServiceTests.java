@@ -42,6 +42,6 @@ class PlayerServiceTests {
 	@Order(4)
 	void testGetPlayerByName() {
 		Player adam = pserv.getPlayerByName("Adam");
-		Assertions.assertEquals("Adam", adam);
+		Assertions.assertEquals("Adam", adam.getName());
 	}
 }
