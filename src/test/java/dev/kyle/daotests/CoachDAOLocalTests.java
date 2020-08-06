@@ -4,19 +4,23 @@ import java.util.Set;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer;
 
+
+import dev.kyle.daos.CoachDAO;
 import dev.kyle.daos.CoachDAOLocal;
 import dev.kyle.entities.Coach;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CoachDAOLocalTests {
 	
-	CoachDAOLocal cdao = CoachDAOLocal.getCoachDAO();
+	CoachDAO cdao = CoachDAOLocal.getCoachDAO();
 	@Test
 	@Order(1)
 	void createCoach() {
 		Coach c = new Coach(0, "Adam Ranieri");
-		c = cDao.createCoach(c);
+		c = cdao.createCoach(c);
 		Assertions.assertNotEquals(0, c.getId());
   }
 	

@@ -1,17 +1,18 @@
 package dev.kyle.daos;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 import dev.kyle.entities.Player;
 
 public class PlayerDAOLocal implements PlayerDAO{	
-	private static PlayerDAOLocal dao = null;
+	private static PlayerDAO dao = null;
 	
 	private PlayerDAOLocal() {};
 	
-	public static PlayerDAOLocal getPlayerDAO() {
+	public static PlayerDAO getPlayerDAO() {
 		if(dao == null) {
 			dao = new PlayerDAOLocal();
 			return dao;

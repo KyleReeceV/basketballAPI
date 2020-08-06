@@ -1,6 +1,8 @@
 package dev.kyle.services;
 
 import java.util.Set;
+
+import dev.kyle.daos.CoachDAO;
 import dev.kyle.daos.CoachDAOLocal;
 import dev.kyle.entities.Coach;
 

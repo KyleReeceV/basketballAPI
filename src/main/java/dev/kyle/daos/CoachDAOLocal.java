@@ -12,7 +12,7 @@ public class CoachDAOLocal implements CoachDAO {
 	
 	private CoachDAOLocal() {};
 	
-	public static CoachDAOLocal getCoachDAO() {
+	public static CoachDAO getCoachDAO() {
 		if(dao == null) {
 			dao = new CoachDAOLocal();
 			return dao;

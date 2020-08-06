@@ -16,7 +16,7 @@ public class PlayerController {
 		public static Handler createPlayer = (ctx)->{
 		Player p = gson.fromJson(ctx.body(), Player.class);
 		try {
-			p = pServ.createPlayer(p);
+			p = pserv.createPlayer(p);
 			ctx.result(gson.toJson(p));
 			ctx.status(201);
 		}catch(Exception e) {
