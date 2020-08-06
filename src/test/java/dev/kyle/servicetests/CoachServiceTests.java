@@ -10,5 +10,13 @@ class CoachServiceTests {
 	void test() {
 		fail("Not yet implemented");
 	}
+	
+	@Test
+	@Order(3)
+	void updateCoach() {
+		Coach brier = cserv.getCoachById(1);
+		cserv.updateCoach(brier, "Wickerfield");
+		Assertions.assertEquals("Wickerfield",brier.getName());
+	}
 
 }
