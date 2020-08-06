@@ -1,7 +1,12 @@
 package dev.kyle.services;
 
+import java.util.Set;
 import dev.kyle.entities.Player;
 
 public interface PlayerService {
-	public Player createPlayer(Player p);
+	Player createPlayer(Player p);
+	
+	Player getPlayerById(int id);
+	Set<Player> getAllPlayers();
+	Player getPlayerByName(String name);
 }

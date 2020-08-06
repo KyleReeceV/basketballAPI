@@ -1,28 +1,47 @@
 package dev.kyle.servicetests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Assertions;
+import java.util.Set;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
+
 import dev.kyle.entities.Coach;
 import dev.kyle.services.CoachService;
 import dev.kyle.services.CoachServiceImpl;
 
-@TestMethodOrder(OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CoachServiceTests {
 
-	CoachService cServ = new CoachServiceImpl();
+	private static CoachService cserv = new CoachServiceImpl();
 	
-	@Test
+  @Test
 	@Order(1)
 	void createCoach() {
-		Coach c = new Coach(0, "Adam Ranieri");
+		Coach c = new Coach(0, "Adam");
 		c = cServ.createCoach(c);
 		Assertions.assertNotEquals(0, c.getId());
+  }
+	@Test
+	@Order(2)
+	void testGetCoachById() {
+		Coach c = cserv.getCoachById(1);
+		Assertions.assertEquals(1, c.getId());
+
+	}
+	@Test
+	@Order(3)
+	void testGetAllCoaches() {
+		Set<Coach> coaches = cserv.getAllCoachs();
+		Assertions.assertNotEquals(0, coaches);
+	}
+	
+	@Test
+	@Order(4)
+	void testGetCoachByName() {
+		Coach adam = cserv.getCoachByName("Adam");
+		Assertions.assertEquals("Adam", adam);
 	}
 
 }

@@ -1,20 +1,24 @@
 package dev.kyle.daos;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 import dev.kyle.entities.Coach;
 
 public class CoachDAOLocal implements CoachDAO {
-
-	private static CoachDAO cDao = null;
-	private CoachDAOLocal() {}
-	public static CoachDAO getCoachDAO() {
-		if(cDao == null) {
-			cDao = new CoachDAOLocal();
+	private static CoachDAO dao = null;
+	
+	private CoachDAOLocal() {};
+	
+	public static CoachDAOLocal getCoachDAO() {
+		if(dao == null) {
+			dao = new CoachDAOLocal();
+			return dao;
+		} else {
+			return dao;
 		}
-		return cDao;
 	}
 	
 	private Map<Integer,Coach> coach_table = new HashMap<Integer,Coach>();
@@ -27,12 +31,12 @@ public class CoachDAOLocal implements CoachDAO {
 		return c;
 	}
 	public Coach getCoachById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return coach_table.get(id);
 	}
 	public Set<Coach> getAllCoachs() {
-		// TODO Auto-generated method stub
-		return null;
+		coach_table.values();
+		Set<Coach> coaches = new HashSet<Coach>(coach_table.values());
+		return coaches;
 	}
 	public Coach updateCoach(Coach c) {
 		// TODO Auto-generated method stub
@@ -42,5 +46,4 @@ public class CoachDAOLocal implements CoachDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }
