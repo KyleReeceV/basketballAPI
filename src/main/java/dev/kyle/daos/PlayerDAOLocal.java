@@ -39,32 +39,17 @@ public class PlayerDAOLocal implements PlayerDAO{
 		Set<Player> players = new HashSet<Player>(player_table.values());
 		return players;
 	}
-	public Player updatePlayer(Player p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public boolean deletePlayer(Player p) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-private static PlayerDAOLocal dao = null;
-	
-	private PlayerDAOLocal() {};
-	
-	public static PlayerDAOLocal getPlayerDAO() {
-		if(dao == null) {
-			dao = new PlayerDAOLocal();
-			return dao;
-		} else {
-			return dao;
-		}
-	}
 	
 	//update
 	public Player updatePlayer(Player player) {
 		player_table.put(player.getId(), player);
 		return player;
 	}
+	
+	public boolean deletePlayer(Player p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }

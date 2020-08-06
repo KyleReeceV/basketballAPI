@@ -13,18 +13,6 @@ public class CoachController {
 	public static CoachService cserv = new CoachServiceImpl();
 	private static Gson gson = new Gson();
 	
-	public static Handler updateCoach = (ctx)->{
-		String coachJson = ctx.body();
-		Coach coach = gson.fromJson(coachJson, Coach.class);
-		cserv.updateCoach(coach);	
-		ctx.result(gson.toJson(coach));
-	};
-	
-
-	private static Gson gson = new Gson();
-	
-	private static CoachService cserv = new CoachServiceImpl();
-	
 	public static Handler createCoach = (ctx)->{
 		Coach c = gson.fromJson(ctx.body(), Coach.class);
 		try {
@@ -59,4 +47,12 @@ public class CoachController {
 			ctx.result(json);
 		}
 	};
+	
+	public static Handler updateCoach = (ctx)->{
+		String coachJson = ctx.body();
+		Coach coach = gson.fromJson(coachJson, Coach.class);
+		cserv.updateCoach(coach);	
+		ctx.result(gson.toJson(coach));
+	};
+	
 }

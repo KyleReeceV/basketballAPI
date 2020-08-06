@@ -47,7 +47,8 @@ class PlayerServiceTests {
   @Order(5)
 	void updatePlayer() {
 		Player brier = pserv.getPlayerById(1);
-		pserv.updatePlayer(brier, "Wickerfield");
+		brier.setName("Wickerfield");
+		pserv.updatePlayer(brier);
 		Assertions.assertEquals("Wickerfield",brier.getName());
 	}
 }

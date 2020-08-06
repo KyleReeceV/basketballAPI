@@ -50,7 +50,8 @@ class CoachServiceTests {
 	@Order(3)
 	void updateCoach() {
 		Coach brier = cserv.getCoachById(1);
-		cserv.updateCoach(brier, "Wickerfield");
+		brier.setName("Wickerfield");
+		cserv.updateCoach(brier);
 		Assertions.assertEquals("Wickerfield",brier.getName());
 	}
 

@@ -9,4 +9,6 @@ public interface PlayerService {
 	Player getPlayerById(int id);
 	Set<Player> getAllPlayers();
 	Player getPlayerByName(String name);
+	
+	Player updatePlayer(Player player);
 }
