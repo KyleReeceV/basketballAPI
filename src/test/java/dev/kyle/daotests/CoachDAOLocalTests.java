@@ -1,7 +1,5 @@
 package dev.kyle.daotests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -14,18 +12,37 @@ import dev.kyle.daos.CoachDAO;
 import dev.kyle.daos.CoachDAOLocal;
 import dev.kyle.entities.Coach;
 
-class CoachDAOLocalTests {
+import java.util.Set;
 
-	public static CoachDAO cdao =  (CoachDAO) CoachDAOLocal.getCoachDAO();
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class CoachDAOLocalTests {
+	
+	CoachDAO cdao = CoachDAOLocal.getCoachDAO();
+
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	@Order(1)
+	void createCoach() {
+		Coach c = new Coach(0, "Adam Ranieri");
+		c = cdao.createCoach(c);
+		Assertions.assertNotEquals(0, c.getId());
+  }
+	
+	@Test
+	@Order(2)
+	void testGetCoachById() {
+		Coach c = cdao.getCoachById(1);
+		Assertions.assertEquals(1, c.getId());
 	}
 	
-	
-	
 	@Test
-	
+	@Order(3)
+	void testGetAllCoaches() {
+		Set<Coach> coaches = cdao.getAllCoachs();
+		Assertions.assertNotEquals(0, coaches);
+  }
+  
+	@Test
+	@Order(4)
 	void updateCoach() {
 		Coach mon = cdao.getCoachById(1);
 		mon.setName("Downtown Highschool");
@@ -33,6 +50,4 @@ class CoachDAOLocalTests {
 		Assertions.assertEquals("Downtown Highschool", mon.getName());
 		
 	}
-	
-
 }

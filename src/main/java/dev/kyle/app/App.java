@@ -7,17 +7,19 @@ import io.javalin.Javalin;
 public class App {
 	
 	public static void main(String[] args) {
-		Javalin app = Javalin.create(config ->{     // pass in a lambda that describes HOW to create the app
-			
-			//config.enableCorsForAllOrigins();
-			config.addStaticFiles("/frontend");
-			
-		}).start(7000);
-	
-	app.put("/coaches", CoachController.updateCoach);
-	
-	app.put("/coaches/:id/playerss", PlayerController.updatePlayer);
-	
-	
-	
+		Javalin app = Javalin.create().start(7000);
+
+		app.get("/coaches/:cid", CoachController.getCoachById);
+		app.get("/coaches", CoachController.getAllCoaches);
+		
+		app.get("/players/:pid", PlayerController.getPlayerById);
+		app.get("players", PlayerController.getAllPlayers);
+    
+    app.post("/players", PlayerController.createPlayer);
+		app.post("/coaches", CoachController.createCoach);
+    
+    app.put("/coaches", CoachController.updateCoach);
+  	app.put("/coaches/:id/players", PlayerController.updatePlayer);
+		
+	}
 }
