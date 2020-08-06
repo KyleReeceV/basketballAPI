@@ -14,6 +14,9 @@ public class App {
 		
 		app.get("/players/:pid", PlayerController.getPlayerById);
 		app.get("players", PlayerController.getAllPlayers);
+    
+    app.post("/players", PlayerController.createPlayer);
+		app.post("/coaches", CoachController.createCoach);
 		
 	}
 }

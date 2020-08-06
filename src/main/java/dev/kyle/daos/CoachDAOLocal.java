@@ -8,8 +8,7 @@ import java.util.Set;
 import dev.kyle.entities.Coach;
 
 public class CoachDAOLocal implements CoachDAO {
-	
-	private static CoachDAOLocal dao = null;
+	private static CoachDAO dao = null;
 	
 	private CoachDAOLocal() {};
 	
@@ -26,8 +25,10 @@ public class CoachDAOLocal implements CoachDAO {
 	private int count = 1;
 	
 	public Coach createCoach(Coach c) {
-		// TODO Auto-generated method stub
-		return null;
+		c.setId(count);
+		count++;
+		coach_table.put(c.getId(), c);
+		return c;
 	}
 	public Coach getCoachById(int id) {
 		return coach_table.get(id);
@@ -45,5 +46,4 @@ public class CoachDAOLocal implements CoachDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }

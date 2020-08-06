@@ -10,6 +10,9 @@ public class PlayerServiceImpl implements PlayerService {
 
 	private static PlayerDAO pdao = PlayerDAOLocal.getPlayerDAO();
 	
+  public Player createPlayer(Player p) {
+		return pdao.createPlayer(p);
+	}
 	public Player getPlayerById(int id) {
 		return pdao.getPlayerById(id);
 	}

@@ -1,20 +1,29 @@
 package dev.kyle.controllers;
 
-import java.util.Set;
-
 import com.google.gson.Gson;
 
 import dev.kyle.entities.Player;
 import dev.kyle.services.PlayerService;
 import dev.kyle.services.PlayerServiceImpl;
 import io.javalin.http.Handler;
+import java.util.Set;
 
 public class PlayerController {
 
 	private static Gson gson = new Gson();
 	
 	private static PlayerService pserv = new PlayerServiceImpl();
-	
+		public static Handler createPlayer = (ctx)->{
+		Player p = gson.fromJson(ctx.body(), Player.class);
+		try {
+			p = pServ.createPlayer(p);
+			ctx.result(gson.toJson(p));
+			ctx.status(201);
+		}catch(Exception e) {
+			ctx.result("Creation Failed");
+			ctx.status(500);
+    }
+   };
 	
 	public static Handler getPlayerById = (ctx) -> {
 		String strCid = ctx.pathParam("pid");

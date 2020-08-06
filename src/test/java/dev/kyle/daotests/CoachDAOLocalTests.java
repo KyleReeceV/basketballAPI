@@ -1,9 +1,6 @@
 package dev.kyle.daotests;
 
 import java.util.Set;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -15,7 +12,13 @@ import dev.kyle.entities.Coach;
 class CoachDAOLocalTests {
 	
 	CoachDAOLocal cdao = CoachDAOLocal.getCoachDAO();
-	
+	@Test
+	@Order(1)
+	void createCoach() {
+		Coach c = new Coach(0, "Adam Ranieri");
+		c = cDao.createCoach(c);
+		Assertions.assertNotEquals(0, c.getId());
+  }
 	
 	@Test
 	@Order(2)
@@ -30,5 +33,4 @@ class CoachDAOLocalTests {
 		Set<Coach> coaches = cdao.getAllCoachs();
 		Assertions.assertNotEquals(0, coaches);
 	}
-
 }

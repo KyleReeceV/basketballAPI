@@ -1,12 +1,11 @@
 package dev.kyle.servicetests;
 
 import java.util.Set;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+
 
 import dev.kyle.entities.Coach;
 import dev.kyle.services.CoachService;
@@ -17,6 +16,13 @@ class CoachServiceTests {
 
 	private static CoachService cserv = new CoachServiceImpl();
 	
+  @Test
+	@Order(1)
+	void createCoach() {
+		Coach c = new Coach(0, "Adam");
+		c = cServ.createCoach(c);
+		Assertions.assertNotEquals(0, c.getId());
+  }
 	@Test
 	@Order(2)
 	void testGetCoachById() {

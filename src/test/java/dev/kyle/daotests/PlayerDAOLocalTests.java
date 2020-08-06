@@ -1,7 +1,5 @@
 package dev.kyle.daotests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Set;
 
 import org.junit.jupiter.api.Assertions;
@@ -17,6 +15,14 @@ import dev.kyle.entities.Player;
 class PlayerDAOLocalTests {
 	PlayerDAOLocal pdao = PlayerDAOLocal.getPlayerDAO();
 	
+  @Test
+	@Order(1)
+	void createPlayer() {
+		Player p = new Player(0, "Adam Ranieri", "shooting guard");
+		p = pDao.createPlayer(p);
+		Assertions.assertNotEquals(0, p.getId());
+  }
+  
 	@Test
 	@Order(2)
 	void testGetPlayerById() {

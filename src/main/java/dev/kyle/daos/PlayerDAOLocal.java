@@ -6,8 +6,7 @@ import java.util.Set;
 
 import dev.kyle.entities.Player;
 
-public class PlayerDAOLocal implements PlayerDAO{
-	
+public class PlayerDAOLocal implements PlayerDAO{	
 	private static PlayerDAOLocal dao = null;
 	
 	private PlayerDAOLocal() {};
@@ -20,20 +19,23 @@ public class PlayerDAOLocal implements PlayerDAO{
 			return dao;
 		}
 	}
-	
 
 	private Map<Integer,Player> player_table = new HashMap<Integer,Player>();
 	private int count = 1;
+  
 	public Player createPlayer(Player p) {
-		// TODO Auto-generated method stub
-		return null;
+		p.setId(count);
+		count++;
+		player_table.put(p.getId(), p);
+		return p;
 	}
 	public Player getPlayerById(int id) {
 		return player_table.get(id);
 	}
 	public Set<Player> getAllPlayers() {
-		// TODO Auto-generated method stub
-		return null;
+		player_table.values();
+		Set<Player> players = new HashSet<Player>(player_table.values());
+		return players;
 	}
 	public Player updatePlayer(Player p) {
 		// TODO Auto-generated method stub
