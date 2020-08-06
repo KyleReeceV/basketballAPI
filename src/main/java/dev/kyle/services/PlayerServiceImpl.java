@@ -33,4 +33,11 @@ public class PlayerServiceImpl implements PlayerService {
 	public Player updatePlayer(Player player) {
 		return pdao.updatePlayer(player);
 	}
+	public boolean deletePlayer(Player p) {
+		return pdao.deletePlayer(p);
+	}
+
+	public boolean deletePlayerById(int id) {
+		return pdao.deletePlayer(pdao.getPlayerById(id));
+	}
 }

@@ -10,9 +10,9 @@ import dev.kyle.entities.Player;
 
 public class PlayerDAOLocal implements PlayerDAO{	
 	private static PlayerDAO dao = null;
-	
+
 	private PlayerDAOLocal() {};
-	
+
 	public static PlayerDAO getPlayerDAO() {
 		if(dao == null) {
 			dao = new PlayerDAOLocal();
@@ -24,7 +24,7 @@ public class PlayerDAOLocal implements PlayerDAO{
 
 	private Map<Integer,Player> player_table = new HashMap<Integer,Player>();
 	private int count = 1;
-  
+
 	public Player createPlayer(Player p) {
 		p.setId(count);
 		count++;
@@ -39,17 +39,25 @@ public class PlayerDAOLocal implements PlayerDAO{
 		Set<Player> players = new HashSet<Player>(player_table.values());
 		return players;
 	}
-	
+
 	//update
 	public Player updatePlayer(Player player) {
 		player_table.put(player.getId(), player);
 		return player;
 	}
-	
+
 	public boolean deletePlayer(Player p) {
-		// TODO Auto-generated method stub
+		if(player_table.get(p.getId())==null){
+			return false;
+		}else{
+			Player player = player_table.remove(p.getId());
+			if(player_table.get(p.getId()) == null) {
+				return true;
+			}
+		}
+
 		return false;
 	}
 
-	
+
 }

@@ -57,4 +57,24 @@ public class PlayerController {
 			ctx.result(json);
 		}
 	};
+	public static Handler deletePlayer = (ctx) ->{
+		Player player = gson.fromJson(ctx.body(), Player.class);
+		boolean result = pserv.deletePlayer(player);
+		if(result) {
+			ctx.result("Player has been successfully deleted");
+		}else {
+			ctx.result("Player has failed to be deleted.");
+		}
+		
+	};
+	public static Handler deleteByIdPlayer = (ctx) ->{
+		int id = Integer.parseInt(ctx.pathParam("id"));
+		boolean result = pserv.deletePlayerById(id);
+		if(result) {
+			ctx.result("Player has been successfully deleted");
+		}else {
+			ctx.result("Player has failed to be deleted.");
+		}
+		
+	};
 }

@@ -20,6 +20,11 @@ public class App {
     
     app.put("/coaches", CoachController.updateCoach);
   	app.put("/coaches/:id/players", PlayerController.updatePlayer);
+  	app.delete("/coaches", CoachController.deleteCoach);
+	app.delete("/coaches/:id", CoachController.deleteByIdCoach);
+	
+	app.delete("/players", PlayerController.deletePlayer);
+	app.delete("/players/:id", PlayerController.deleteByIdPlayer);
 		
 	}
 }

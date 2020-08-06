@@ -55,4 +55,26 @@ public class CoachController {
 		ctx.result(gson.toJson(coach));
 	};
 	
+	public static Handler deleteCoach = (ctx) ->{
+		Coach c = gson.fromJson(ctx.body(), Coach.class);
+		boolean result = cserv.deleteCoach(c);
+		if(result) {
+			ctx.result("Coach has been successfully deleted");
+		}else {
+			ctx.result("Coach has failed to be deleted.");
+		}
+		
+	};
+	public static Handler deleteByIdCoach = (ctx) ->{
+		int id = Integer.parseInt(ctx.pathParam("id"));
+		boolean result = cserv.deleteCoachById(id);
+		if(result) {
+			ctx.result("Coach has been successfully deleted");
+		}else {
+			ctx.result("Coach has failed to be deleted.");
+		}
+		
+	};
+	
+	
 }

@@ -23,13 +23,14 @@ class CoachServiceTests {
 	void createCoach() {
 		Coach c = new Coach(0, "Adam");
 		c = cserv.createCoach(c);
+		System.out.println(c);
 		Assertions.assertNotEquals(0, c.getId());
   }
 	@Test
 	@Order(2)
 	void testGetCoachById() {
-		Coach c = cserv.getCoachById(1);
-		Assertions.assertEquals(1, c.getId());
+		Coach c = cserv.getCoachById(2);
+		Assertions.assertEquals(2, c.getId());
 
 	}
 	@Test
@@ -47,12 +48,18 @@ class CoachServiceTests {
 	}
 	
 	@Test
-	@Order(3)
+	@Order(5)
 	void updateCoach() {
-		Coach brier = cserv.getCoachById(1);
+		Coach brier = cserv.getCoachById(2);
 		brier.setName("Wickerfield");
 		cserv.updateCoach(brier);
 		Assertions.assertEquals("Wickerfield",brier.getName());
+	}
+	@Test
+	@Order(6)
+	void deleteCoachTest() {
+		boolean result = cserv.deleteCoach(cserv.getCoachById(2));
+		Assertions.assertEquals(true,result);
 	}
 
 }

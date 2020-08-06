@@ -11,4 +11,6 @@ public interface PlayerService {
 	Player getPlayerByName(String name);
 	
 	Player updatePlayer(Player player);
+	boolean deletePlayer(Player p);
+	boolean deletePlayerById(int id);
 }

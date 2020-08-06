@@ -33,4 +33,11 @@ public class CoachServiceImpl implements CoachService {
  	public Coach updateCoach(Coach coach) {		
 		return cdao.updateCoach(coach);
 	}
+ 	public boolean deleteCoach(Coach c) {
+		return cdao.deleteCoach(c);
+	}
+
+	public boolean deleteCoachById(int id) {
+		return cdao.deleteCoach(cdao.getCoachById(id));
+	}
 }

@@ -51,4 +51,11 @@ class CoachDAOLocalTests {
 		Assertions.assertEquals("Downtown Highschool", mon.getName());
 		
 	}
+	
+	@Test
+	@Order(5)
+	void deleteCoachTest() {
+		boolean result = cdao.deleteCoach(cdao.getCoachById(1));
+		Assertions.assertEquals(true,result);
+	}
 }
