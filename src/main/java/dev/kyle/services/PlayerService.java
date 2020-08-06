@@ -1,5 +1,7 @@
 package dev.kyle.services;
 
-public interface PlayerService {
+import dev.kyle.entities.Player;
 
+public interface PlayerService {
+	public Player createPlayer(Player p);
 }

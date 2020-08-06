@@ -1,5 +1,7 @@
 package dev.kyle.services;
 
-public interface CoachService {
+import dev.kyle.entities.Coach;
 
+public interface CoachService {
+	public Coach createCoach(Coach c);
 }
