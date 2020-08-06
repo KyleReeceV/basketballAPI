@@ -14,16 +14,16 @@ public class CoachController {
 	
 	private static CoachService cserv = new CoachServiceImpl();
 	
-		public static Handler createCoach = (ctx)->{
-		Coach c = gson.fromJson(ctx.body(), Coach.class);
-		try {
-			c = cServ.createCoach(c);
-			ctx.result(gson.toJson(c));
-			ctx.status(201);
-		}catch(Exception e) {
-			ctx.result("Creation Failed");
-			ctx.status(500);
-		}
+	public static Handler createCoach = (ctx)->{
+	Coach c = gson.fromJson(ctx.body(), Coach.class);
+	try {
+		c = cServ.createCoach(c);
+		ctx.result(gson.toJson(c));
+		ctx.status(201);
+	}catch(Exception e) {
+		ctx.result("Creation Failed");
+		ctx.status(500);
+	};
   
 	public static Handler getCoachById = (ctx) -> {
 		String strCid = ctx.pathParam("cid");
