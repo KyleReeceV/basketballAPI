@@ -1,14 +1,21 @@
 package dev.kyle.controllers;
 
 import com.google.gson.Gson;
-
 import dev.kyle.entities.Player;
 import dev.kyle.services.PlayerService;
 import dev.kyle.services.PlayerServiceImpl;
 import io.javalin.http.Handler;
 import java.util.Set;
 
+
 public class PlayerController {
+	
+	public static Handler updatePlayer = (ctx)->{
+		Player player = gson.fromJson(ctx.body(), Player.class);
+		pServ.updatePlayer(player);
+		String json = gson.toJson(player);
+		ctx.result(json);
+	};
 
 	private static Gson gson = new Gson();
 	

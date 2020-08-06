@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import dev.kyle.entities.Coach;
 import dev.kyle.entities.Player;
 
 public class PlayerDAOLocal implements PlayerDAO{	
@@ -45,6 +46,25 @@ public class PlayerDAOLocal implements PlayerDAO{
 	public boolean deletePlayer(Player p) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+private static PlayerDAOLocal dao = null;
+	
+	private PlayerDAOLocal() {};
+	
+	public static PlayerDAOLocal getPlayerDAO() {
+		if(dao == null) {
+			dao = new PlayerDAOLocal();
+			return dao;
+		} else {
+			return dao;
+		}
+	}
+	
+	//update
+	public Player updatePlayer(Player player) {
+		player_table.put(player.getId(), player);
+		return player;
 	}
 	
 }

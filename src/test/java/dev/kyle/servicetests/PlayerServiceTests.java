@@ -23,14 +23,12 @@ class PlayerServiceTests {
 		p = pserv.createPlayer(p);
 		Assertions.assertNotEquals(0, p.getId());
   }
-  
-	@Test
 	@Order(2)
 	void testGetPlayerById() {
 		Player p = pserv.getPlayerById(1);
 		Assertions.assertEquals(1, p.getId());
-
 	}
+  
 	@Test
 	@Order(3)
 	void testGetAllPlayeres() {
@@ -43,5 +41,13 @@ class PlayerServiceTests {
 	void testGetPlayerByName() {
 		Player adam = pserv.getPlayerByName("Adam");
 		Assertions.assertEquals("Adam", adam.getName());
+	}
+  
+  @Test
+  @Order(5)
+	void updatePlayer() {
+		Player brier = pserv.getPlayerById(1);
+		pserv.updatePlayer(brier, "Wickerfield");
+		Assertions.assertEquals("Wickerfield",brier.getName());
 	}
 }

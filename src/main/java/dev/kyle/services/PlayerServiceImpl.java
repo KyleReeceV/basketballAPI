@@ -29,4 +29,8 @@ public class PlayerServiceImpl implements PlayerService {
 		}
 		return null;
 	}
+  
+	public Player updatePlayer(Player player) {
+		return pdao.updatePlayer(player);
+	}
 }

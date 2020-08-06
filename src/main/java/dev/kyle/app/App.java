@@ -17,6 +17,9 @@ public class App {
     
     app.post("/players", PlayerController.createPlayer);
 		app.post("/coaches", CoachController.createCoach);
+    
+    app.put("/coaches", CoachController.updateCoach);
+  	app.put("/coaches/:id/players", PlayerController.updatePlayer);
 		
 	}
 }

@@ -29,5 +29,8 @@ public class CoachServiceImpl implements CoachService {
 		}
 		return null;
 	}
-
+  
+ 	public Coach updateCoach(Coach coach) {		
+		return cdao.updateCoach(coach);
+	}
 }

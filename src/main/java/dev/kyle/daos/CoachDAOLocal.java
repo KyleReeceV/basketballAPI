@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import dev.kyle.entities.Coach;
-
 public class CoachDAOLocal implements CoachDAO {
 	private static CoachDAO dao = null;
 	
@@ -38,10 +37,11 @@ public class CoachDAOLocal implements CoachDAO {
 		Set<Coach> coaches = new HashSet<Coach>(coach_table.values());
 		return coaches;
 	}
-	public Coach updateCoach(Coach c) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  
+	public Coach updateCoach(Coach coach) {
+		coach_table.put(coach.getId(), coach);
+		return coach;
+  }
 	public boolean deleteCoach(Coach c) {
 		// TODO Auto-generated method stub
 		return false;

@@ -37,5 +37,14 @@ class PlayerDAOLocalTests {
 		Set<Player> players = pdao.getAllPlayers();
 		Assertions.assertNotEquals(0, players);
 	}
+	
+	
+	void updatePlayer() {
+		Player mon = pdao.getPlayerById(1);
+		mon.setName("Downtown Highschool");
+		mon = pdao.updatePlayer(mon); //saves the changes to that school
+		Assertions.assertEquals("Downtown Highschool", mon.getName());
+		
+	}
 
 }
